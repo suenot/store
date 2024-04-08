@@ -33,17 +33,20 @@ import { QueryStoreProvider, useQueryStore } from '@deep-foundation/store/query'
 import { CookiesStoreProvider, useCookiesStore } from '@deep-foundation/store/cookies';
 import { LocalStoreProvider, useLocalStore } from '@deep-foundation/store/local';
 import { CapacitorStoreProvider, useCapacitorStore } from '@deep-foundation/store/capacitor';
+import { SessionStoreProvider, useSessionStore } from '@deep-foundation/store/session';
 ```
 
 ```tsx
 <QueryStoreProvider>
   <CookiesStoreProvider>
     <LocalStoreProvider>
-      <CapacitorStoreProvider
-        fetchInterval={5000} {/* optional, disabled by default, need to support catching not @deep-foundation/store based capacitor store changes. */}
-      >
-        <Content/>
-      </CapacitorStoreProvider>
+      <SessionStoreProvider>
+        <CapacitorStoreProvider
+          fetchInterval={5000} {/* optional, disabled by default, need to support catching not @deep-foundation/store based capacitor store changes. */}
+        >
+          <Content/>
+        </CapacitorStoreProvider>
+      </SessionStoreProvider>
     </LocalStoreProvider>
   </CookiesStoreProvider>
 </QueryStoreProvider>
@@ -56,6 +59,8 @@ const [cookie, setCookie] = useCookiesStore('demo', 5);
 // cookies demo=5
 const [local, setLocal] = useLocalStore('demo', 5);
 // localStorage.getItem('demo') // 5
+const [session, setSession] = useLocalStore('demo', 5);
+// sessionStorage.getItem('demo') // 5
 const [capacitor, setCapacitor] = useCapacitorStore('demo', 5);
 // await Preferences.get('demo') // { value: 5 }
 ```
