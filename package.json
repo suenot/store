@@ -18,6 +18,7 @@
     "package:unbuild": "rm -f ./*.js; rm -f ./*.js.map; rm -f ./*.d.ts",
     "package:publish": "npm run package:build; npm publish --access public; npm run package:unbuild"
   },
+  "files": ["*"],
   "devDependencies": {
     "@capacitor/cli": "^5.4.0",
     "@types/next": "^9.0.0",
