@@ -32,8 +32,8 @@ const [value, setValue, unsetValue]: [Type, (value: Type) => any, () => any] = u
 import { QueryStoreProvider, useQueryStore } from '@deep-foundation/store/query';
 import { CookiesStoreProvider, useCookiesStore } from '@deep-foundation/store/cookies';
 import { LocalStoreProvider, useLocalStore } from '@deep-foundation/store/local';
-import { CapacitorStoreProvider, useCapacitorStore } from '@deep-foundation/store/capacitor';
 import { SessionStoreProvider, useSessionStore } from '@deep-foundation/store/session';
+import { CapacitorStoreProvider, useCapacitorStore } from '@deep-foundation/store/capacitor';
 ```
 
 ```tsx
@@ -59,7 +59,7 @@ const [cookie, setCookie] = useCookiesStore('demo', 5);
 // cookies demo=5
 const [local, setLocal] = useLocalStore('demo', 5);
 // localStorage.getItem('demo') // 5
-const [session, setSession] = useLocalStore('demo', 5);
+const [session, setSession] = useSessionStore('demo', 5);
 // sessionStorage.getItem('demo') // 5
 const [capacitor, setCapacitor] = useCapacitorStore('demo', 5);
 // await Preferences.get('demo') // { value: 5 }
